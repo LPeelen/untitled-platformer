@@ -61,14 +61,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
-
-    // Update is called in sync with the physics engine
-    void FixedUpdate()
-    {
-        // Increase the gravitational strength
-        _rigidbody.AddForce(Physics.gravity * _rigidbody.mass);
-
         // Check if player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -81,6 +73,13 @@ public class PlayerController : MonoBehaviour
 
         // Translate the player in the correct direction
         transform.Translate(new Vector3(movementInput, 0, 0) * speed * Time.deltaTime);
+    }
+
+    // Update is called in sync with the physics engine
+    void FixedUpdate()
+    {
+        // Increase the gravitational strength
+        _rigidbody.AddForce(Physics.gravity * _rigidbody.mass);
     }
 
     void Jump()
